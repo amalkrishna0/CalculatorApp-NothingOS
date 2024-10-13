@@ -6,7 +6,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.NothingCalculator" parent="Theme.AppCompat.Light.NoActionBar" >
+    <style name="Theme.NothingCalculator" parent="Theme.AppCompat.Light.NoActionBar"  >
     <item name="fontFamily">@font/nothing_font</item>
     </style>
 </resources>

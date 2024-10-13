@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.MotionEvent
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +20,10 @@ class MainActivity : AppCompatActivity() {
 
     private var isLongPress = false
     private val handler = Handler(Looper.getMainLooper())
+
+    lateinit var clickAnimation: Animation
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -47,11 +53,14 @@ class MainActivity : AppCompatActivity() {
             findViewById(R.id.btn_20)
         )
 
-        calculatorHelper.setBasicMode(buttons, textArea)
+        clickAnimation = AnimationUtils.loadAnimation(this, R.anim.click_anim)
+
+        calculatorHelper.setBasicMode(buttons, textArea,clickAnimation)
 
         btn1.setOnClickListener {
+            it.startAnimation(clickAnimation)
             if (!toggleOptions) {
-                calculatorHelper.setAdvancedMode(buttons, textArea) {
+                calculatorHelper.setAdvancedMode(buttons, textArea,clickAnimation) {
                     switchToBasicMode()
                 }
                 toggleOptions = true
@@ -61,45 +70,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        buttons[17].setOnClickListener {
-            val currentText = textArea.text.toString()
-            if (currentText.isNotEmpty()) {
-                textArea.setText(currentText.substring(0, currentText.length - 1))
-                textArea.setSelection(textArea.text.length)
-            }
-        }
 
-        buttons[17].setOnTouchListener { v, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    isLongPress = false
-                    handler.postDelayed({
-                        isLongPress = true
-                        textArea.setText("")
-                    }, 500)
-                }
 
-                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                    handler.removeCallbacksAndMessages(null)
-                    if (!isLongPress) {
-                        val currentText = textArea.text.toString()
-                        if (currentText.isNotEmpty()) {
-                            textArea.setText(currentText.substring(0, currentText.length - 1))
-                            textArea.setSelection(textArea.text.length)
-                        }
-                    }
-                }
-            }
-            true
-        }
 
         buttons[18].setOnClickListener {
-            //  logic from edittextt
+            it.startAnimation(clickAnimation)
         }
     }
 
     private fun switchToBasicMode() {
-        calculatorHelper.setBasicMode(buttons, textArea)
+        calculatorHelper.setBasicMode(buttons, textArea, clickAnimation)
         toggleOptions = false
     }
 }
