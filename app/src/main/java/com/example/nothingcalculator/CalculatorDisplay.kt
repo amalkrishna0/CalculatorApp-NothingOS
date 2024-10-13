@@ -26,7 +26,6 @@ class CalculatorDisplay {
         buttons[17].text = "C"
         buttons[18].text = "="
 
-        // Set listeners for basic mode
         buttons[0].setOnClickListener { textArea.append("(") }
         buttons[1].setOnClickListener { textArea.append(")") }
         buttons[2].setOnClickListener { textArea.append("%") }
