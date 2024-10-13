@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Nothing Calculator</string>
+    <string name="menu">☰</string>
+    <string name="left_bracket">(</string>
+    <string name="right_bracket">)</string>
+    <string name="modulus">%</string>
+    <string name="number_7">7</string>
+    <string name="number_8">8</string>
+    <string name="number_9">9</string>
+    <string name="multiplication">x</string>
+    <string name="number_4">4</string>
+    <string name="number_5">5</string>
+    <string name="number_6">6</string>
+    <string name="sub">-</string>
+    <string name="number_1">1</string>
+    <string name="number_2">2</string>
+    <string name="number_3">3</string>
+    <string name="sum">+</string>
+    <string name="number_0">0</string>
+    <string name="dot">.</string>
+    <string name="erase">C</string>
+    <string name="equals">=</string>
+
+
+
+</resources>
