@@ -18,6 +18,7 @@
         android:ellipsize="end"
         android:scrollHorizontally="true"
         android:textColor="@color/white"
+        android:paddingHorizontal="20dp"
         android:gravity="right|bottom"
         android:textSize="50sp"
         />
